@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchases
+- has_many :purchase_logs
 
 
 # itemsテーブル
@@ -34,23 +34,31 @@
 
 ### Association
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase_logs
 
 
-# purchasesテーブル
+# purchase_logsテーブル
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| card_number           | integer    | null: false                    |
-| card_expiration_date  | integer    | null: false                    |
-| card_cvc              | integer    | null: false                    |
-| receiver_postal_code  | integer    | null: false                    |
-| receiver_prefectures  | integer    | null: false                    |
-| receiver_cities       | text       | null: false                    |
-| receiver_address      | text       | null: false                    |
-| receiver_phone_number | integer    | null: false                    |
 | user                  | references | null: false, foreign_key: true |
 | item                  | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :addresses
+
+
+## addressesテーブル
+
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| receiver_postal_code  | integer    | null: false                    |
+| receiver_prefectures  | integer    | null: false                    |
+| receiver_cities       | text       | null: false                    |
+| receiver_address      | text       | null: false                    |
+| receiver_phone_number | integer    | null: false                    |
+| purchase_log          | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :purchase_log
