@@ -23,7 +23,7 @@
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | item_name             | text       | null: false                    |
-| item_description      | integer    | null: false                    |
+| item_description      | text       | null: false                    |
 | item_detail_category  | integer    | null: false                    |
 | item_detail_condition | integer    | null: false                    |
 | delivery_charge       | integer    | null: false                    |
@@ -51,14 +51,15 @@
 
 ## addressesテーブル
 
-| Column                | Type       | Options                        |
-| --------------------- | ---------- | ------------------------------ |
-| receiver_postal_code  | integer    | null: false                    |
-| receiver_prefectures  | integer    | null: false                    |
-| receiver_cities       | text       | null: false                    |
-| receiver_address      | text       | null: false                    |
-| receiver_phone_number | integer    | null: false                    |
-| purchase_log          | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| receiver_postal_code   | string     | null: false                    |
+| receiver_prefectures   | integer    | null: false                    |
+| receiver_cities        | text       | null: false                    |
+| receiver_address       | text       | null: false                    |
+| receiver_building_name | text       | null: false                    |
+| receiver_phone_number  | string     | null: false                    |
+| purchase_log           | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase_log
