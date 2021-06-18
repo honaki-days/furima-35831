@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kane     | string | null: false               |
+| first_name_kane    | string | null: false               |
+| birthday           | date   | null: false               |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :purchase_logs
 
-* System dependencies
 
-* Configuration
+# itemsテーブル
 
-* Database creation
+| Column                   | Type       | Options                        |
+| ------------------------ | ---------- | ------------------------------ |
+| name                     | string     | null: false                    |
+| description              | text       | null: false                    |
+| detail_category_id       | integer    | null: false                    |
+| detail_condition_id      | integer    | null: false                    |
+| delivery_charge_id       | integer    | null: false                    |
+| user_area_id             | integer    | null: false                    |
+| delivery_time_id         | integer    | null: false                    |
+| price                    | integer    | null: false                    |
+| user                     | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :user
+- has_one :purchase_log
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# purchase_logsテーブル
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| user                  | references | null: false, foreign_key: true |
+| item                  | references | null: false, foreign_key: true |
 
-* Deployment instructions
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
-* ...
+
+## addressesテーブル
+
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| receiver_postal_code   | string     | null: false                    |
+| user_area_id           | integer    | null: false                    |
+| receiver_cities        | string     | null: false                    |
+| receiver_address       | string     | null: false                    |
+| receiver_building_name | string     |                                |
+| receiver_phone_number  | string     | null: false                    |
+| purchase_log           | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :purchase_log
