@@ -22,10 +22,10 @@
 
 | Column                   | Type       | Options                        |
 | ------------------------ | ---------- | ------------------------------ |
-| item_name                | string     | null: false                    |
-| item_description         | text       | null: false                    |
-| item_detail_category_id  | integer    | null: false                    |
-| item_detail_condition_id | integer    | null: false                    |
+| name                     | string     | null: false                    |
+| description              | text       | null: false                    |
+| detail_category_id       | integer    | null: false                    |
+| detail_condition_id      | integer    | null: false                    |
 | delivery_charge_id       | integer    | null: false                    |
 | user_area_id             | integer    | null: false                    |
 | delivery_time_id         | integer    | null: false                    |
@@ -54,7 +54,7 @@
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | receiver_postal_code   | string     | null: false                    |
-| user_area              | integer    | null: false                    |
+| user_area_id           | integer    | null: false                    |
 | receiver_cities        | string     | null: false                    |
 | receiver_address       | string     | null: false                    |
 | receiver_building_name | string     |                                |
