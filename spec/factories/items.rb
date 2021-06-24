@@ -2,11 +2,11 @@ FactoryBot.define do
   factory :item do
     name                  {Faker::Name.initials(number: 2)}
     description           {Faker::Lorem.sentence}
-    detail_category       { DetailCategory.all.sample }
-    detail_condition      { DetailCondition.all.sample }
-    delivery_charge       { DeliveryCharge.all.sample }
-    user_area             { UserArea.all.sample }
-    delivery_time         { DeliveryTime.all.sample }
+    detail_category_id    { 2 }
+    detail_condition_id   { 2 }
+    delivery_charge_id    { 2 }
+    user_area_id          { 2 }
+    delivery_time_id      { 2 }
     price                 {3000}
     user
 
