@@ -10,13 +10,22 @@ class Item < ApplicationRecord
   belongs_to :delivery_charge
   belongs_to :delivery_time
 
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :description, presence: true
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+  end
 
   with_options presence: true do
     validates :price, inclusion: { in: 300..9999999 }, format: {with: /\A[0-9]+\z/}
+    # validates :detail_category_id, :detail_condition_id, :user_area_id, :delivery_charge_id, :delivery_time_id, numericality: { other_then: 1 }
   end
 
-  validates :detail_category_id, :detail_condition_id, :user_area_id, :delivery_charge_id, :delivery_time_id, numericality: { other_then: 1 }
+  with_options numericality: {other_than: 1} do
+    validates :detail_category_id
+    validates :detail_condition_id
+    validates :user_area_id
+    validates :delivery_charge_id
+    validates :delivery_time_id
+  end
 end

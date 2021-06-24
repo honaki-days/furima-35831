@@ -7,7 +7,7 @@ FactoryBot.define do
     delivery_charge       { DeliveryCharge.all.sample }
     user_area             { UserArea.all.sample }
     delivery_time         { DeliveryTime.all.sample }
-    price                 {"3000"}
+    price                 {3000}
     user
 
     after(:build) do |item|
