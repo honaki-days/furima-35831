@@ -18,8 +18,14 @@ class ItemsController < ApplicationController
     end
   end
 
+<<<<<<< Updated upstream
   def show
   end
+=======
+ def show
+  @item = Item.show(item_params)
+ end
+>>>>>>> Stashed changes
 
   private
   def item_params
