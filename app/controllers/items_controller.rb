@@ -18,14 +18,16 @@ class ItemsController < ApplicationController
     end
   end
 
-<<<<<<< Updated upstream
   def show
+    @item = Item.find(params[:id])
+    @user = User.find(params[:id])
   end
-=======
- def show
-  @item = Item.show(item_params)
- end
->>>>>>> Stashed changes
+
+  def edit
+  end
+
+  def destroy
+  end
 
   private
   def item_params
