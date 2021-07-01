@@ -48,4 +48,5 @@ class ItemsController < ApplicationController
   def set_user
     redirect_to root_path unless current_user == @item.user
   end
+  
 end
