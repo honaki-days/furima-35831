@@ -35,6 +35,11 @@ RSpec.describe PurchaseLogAddress, type: :model do
         @purchase_log_address.valid?
         expect(@purchase_log_address.errors.full_messages).to include("Receiver postal code is invalid. Include hyphen(-)")
       end
+      it '郵便番号が3-4以外の時' do
+        @purchase_log_address.receiver_postal_code = '1234-567'
+        @purchase_log_address.valid?
+        expect(@purchase_log_address.errors.full_messages).to include("Receiver postal code is invalid. Include hyphen(-)")
+      end
       it '都道府県が空の時' do
         @purchase_log_address.user_area_id = 0
         @purchase_log_address.valid?
@@ -50,7 +55,7 @@ RSpec.describe PurchaseLogAddress, type: :model do
         @purchase_log_address.valid?
         expect(@purchase_log_address.errors.full_messages).to include("Receiver phone number can't be blank")
       end
-      it '電話番号が全角数字の時' do
+      it '電話番号が全角の時' do
         @purchase_log_address.receiver_phone_number = '１２３４５６７８９０'
         @purchase_log_address.valid?
         expect(@purchase_log_address.errors.full_messages).to include("Receiver phone number is invalid.")
@@ -62,6 +67,11 @@ RSpec.describe PurchaseLogAddress, type: :model do
       end
       it '電話番号が９桁以下の時' do
         @purchase_log_address.receiver_phone_number = '123456789'
+        @purchase_log_address.valid?
+        expect(@purchase_log_address.errors.full_messages).to include("Receiver phone number is invalid.")
+      end
+      it '電話番号が数字以外の時' do
+        @purchase_log_address.receiver_phone_number = 'あいうえお'
         @purchase_log_address.valid?
         expect(@purchase_log_address.errors.full_messages).to include("Receiver phone number is invalid.")
       end

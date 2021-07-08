@@ -3,6 +3,17 @@ class PurchaseLogsController < ApplicationController
 
 
   def index
+    if user_signed_in? 
+      if user_signed_in? && @item.purchase_log.present?
+        redirect_to root_path
+      else 
+        if user_signed_in? && current_user.id == @item.user_id
+          redirect_to root_path
+        end
+      end
+    else
+      redirect_to new_user_session_path
+    end
     @purchase_log_address = PurchaseLogAddress.new
   end
 
