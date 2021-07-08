@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
-
+  has_one :purchase_log
   belongs_to :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
