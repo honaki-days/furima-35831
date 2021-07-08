@@ -1,4 +1,5 @@
 class PurchaseLogAddress
+  attr_accessor :token
   include ActiveModel::Model
   attr_accessor :receiver_postal_code, :user_area_id, :receiver_cities, :receiver_address, :receiver_building_name, :receiver_phone_number, :item_id, :user_id, :price
 
@@ -9,9 +10,9 @@ class PurchaseLogAddress
     validates :receiver_cities, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :receiver_address
     validates :receiver_phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
+    validates :token
   end
   validates :user_area_id, numericality: {other_than: 0, message: "can't be blank"}
-
 
 
   def save
