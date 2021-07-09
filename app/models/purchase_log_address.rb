@@ -15,10 +15,8 @@ class PurchaseLogAddress
 
 
   def save
-    # 購入情報を保存し、変数PurchaseLogに代入する
     purchase_log = PurchaseLog.create(item_id: item_id, user_id: user_id)
-    # 住所を保存する
-    # purchase_log_idには、変数purchase_logのidと指定する
+
     Address.create(receiver_postal_code: receiver_postal_code, user_area_id: user_area_id, receiver_cities: receiver_cities, receiver_address: receiver_address, receiver_building_name: receiver_building_name, receiver_phone_number: receiver_phone_number, purchase_log: purchase_log)
   end
 end
