@@ -1,7 +1,6 @@
 class PurchaseLogAddress
-  attr_accessor :token
   include ActiveModel::Model
-  attr_accessor :receiver_postal_code, :user_area_id, :receiver_cities, :receiver_address, :receiver_building_name, :receiver_phone_number, :item_id, :user_id, :price
+  attr_accessor :receiver_postal_code, :user_area_id, :receiver_cities, :receiver_address, :receiver_building_name, :receiver_phone_number, :item_id, :user_id, :price, :token
 
 
   with_options presence: true do

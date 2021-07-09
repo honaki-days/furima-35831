@@ -1,5 +1,6 @@
 class PurchaseLogsController < ApplicationController
   before_action :item_find, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
 
 
   def index

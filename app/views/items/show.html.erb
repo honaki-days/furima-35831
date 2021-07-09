@@ -8,13 +8,13 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image, class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
+
       <% if @item.purchase_log.present? %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
       <% end %>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -25,7 +25,6 @@
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <% if user_signed_in? && @item.present? %>
       <% if current_user.id == @item.user_id && @item.purchase_log.nil? %>
@@ -33,15 +32,14 @@
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
       <% else %>
-          <%# 商品が売れていない場合はこちらを表示しましょう %>
+
         <% if user_signed_in? && @item.purchase_log.nil?  %>
           <%= link_to "購入画面に進む", item_purchase_logs_path(@item.id) ,class:"item-red-btn"%>
         <% end %>
-        <%# //商品が売れていない場合はこちらを表示しましょう %>
+
       <% end %>
     <% end %>
 
-  <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
 
     <div class="item-explain-box">
