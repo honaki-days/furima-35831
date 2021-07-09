@@ -1,7 +1,7 @@
 class PurchaseLogsController < ApplicationController
   before_action :item_find, only: [:index, :create]
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :root_path, only: [:index, :create]
+  before_action :return, only: [:index, :create]
 
 
 
@@ -39,9 +39,9 @@ class PurchaseLogsController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def root_path  
+  def return
     if current_user.id == @item.user_id || @item.purchase_log.present?
-    　redirect_to root_path
+      redirect_to root_path
     end
   end
 end

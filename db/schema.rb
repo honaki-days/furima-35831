@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_102451) do
     t.integer "user_area_id", null: false
     t.string "receiver_cities", null: false
     t.string "receiver_address", null: false
-    t.string "receiver_building_name", null: false
+    t.string "receiver_building_name"
     t.string "receiver_phone_number", null: false
     t.bigint "purchase_log_id", null: false
     t.datetime "created_at", precision: 6, null: false
