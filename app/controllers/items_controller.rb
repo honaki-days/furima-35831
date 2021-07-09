@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.purchase_log.present?
-      redirect_to action: :index
-    end
   end
 
   def destroy
@@ -56,6 +53,10 @@ class ItemsController < ApplicationController
 
   def set_user
     redirect_to root_path unless current_user == @item.user
+  else
+    if @item.purchase_log.present?
+      redirect_to root_path
+    end
   end
 
 end
