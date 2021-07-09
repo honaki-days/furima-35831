@@ -40,7 +40,7 @@ class PurchaseLogsController < ApplicationController
   end
 
   def  root_path  
-    if current_user.id == @item.user_id or @item.purchase_log.present?
+    if current_user.id == @item.user_id || @item.purchase_log.present?
     　redirect_to root_path
     end
   end
