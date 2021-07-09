@@ -55,6 +55,10 @@ class ItemsController < ApplicationController
     redirect_to root_path unless current_user == @item.user
     if @item.purchase_log.present?
       redirect_to root_path
+
+      if @item.purchase_log.present? or current_user == @item.user
+        　　redirect_to root_path
+        end
     end
   end
 

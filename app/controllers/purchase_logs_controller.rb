@@ -1,16 +1,11 @@
 class PurchaseLogsController < ApplicationController
   before_action :item_find, only: [:index, :create]
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :root_path [:index, :create]
+
 
 
   def index
-    if user_signed_in? && @item.purchase_log.present?
-      redirect_to root_path
-    else 
-      if user_signed_in? && current_user.id == @item.user_id
-        redirect_to root_path
-      end
-    end
   @purchase_log_address = PurchaseLogAddress.new
   end
 
@@ -34,13 +29,19 @@ class PurchaseLogsController < ApplicationController
   def pay_item
   Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
-        amount: @item[:price],  # 商品の値段
-        card: purchase_log_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
+        amount: @item[:price],  
+        card: purchase_log_params[:token], 
+        currency: 'jpy'                 
       )
   end
 
   def item_find
     @item = Item.find(params[:item_id])
+  end
+
+  def  root_path  
+    if current_user.id == @item.user_id or @item.purchase_log.present?
+    　redirect_to root_path
+    end
   end
 end
