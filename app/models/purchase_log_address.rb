@@ -15,8 +15,8 @@ class PurchaseLogAddress
 
 
   def save
-    purchase_log = PurchaseLog.create(item_id: item_id, user_id: user_id)
+    purchase_log_id = PurchaseLog.create(item_id: item_id, user_id: user_id)
 
-    Address.create(receiver_postal_code: receiver_postal_code, user_area_id: user_area_id, receiver_cities: receiver_cities, receiver_address: receiver_address, receiver_building_name: receiver_building_name, receiver_phone_number: receiver_phone_number, purchase_log: purchase_log)
+    Address.create(receiver_postal_code: receiver_postal_code, user_area_id: user_area_id, receiver_cities: receiver_cities, receiver_address: receiver_address, receiver_building_name: receiver_building_name, receiver_phone_number: receiver_phone_number, purchase_log_id: purchase_log_id)
   end
 end
