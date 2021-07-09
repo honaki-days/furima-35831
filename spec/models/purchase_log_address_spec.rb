@@ -87,6 +87,18 @@ RSpec.describe PurchaseLogAddress, type: :model do
         @purchase_log_address.valid?
         expect(@purchase_log_address.errors.full_messages).to include("Token can't be blank")
       end
+
+      it "Userが紐ついていないと登録できないこと" do
+        @purchase_log_address.user_id = nil
+        @purchase_log_address.valid?
+        expect(@purchase_log_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "Itemが紐ついていないと登録できないこと" do
+        @purchase_log_address.item_id = nil
+        @purchase_log_address.valid?
+        expect(@purchase_log_address.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
