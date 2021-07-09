@@ -6,7 +6,6 @@ FactoryBot.define do
     receiver_address       { '新宿区' }
     receiver_building_name { '新宿' }
     receiver_phone_number  { '08066667777' }
-    price                  { 3000 }
     token                  {"tok_abcdefghijk00000000000000000"}
   end
 end
