@@ -11,7 +11,7 @@ class PurchaseLogAddress
     validates :receiver_phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
     validates :token
   end
-  validates :user_area_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :user_area_id, numericality: {other_than: 1, message: "must be other than 1"}
 
 
   def save

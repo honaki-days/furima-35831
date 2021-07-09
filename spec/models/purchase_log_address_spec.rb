@@ -41,9 +41,9 @@ RSpec.describe PurchaseLogAddress, type: :model do
         expect(@purchase_log_address.errors.full_messages).to include("Receiver postal code is invalid. Include hyphen(-)")
       end
       it '都道府県が空の時' do
-        @purchase_log_address.user_area_id = 0
+        @purchase_log_address.user_area_id = 1
         @purchase_log_address.valid?
-        expect(@purchase_log_address.errors.full_messages).to include("User area can't be blank")
+        expect(@purchase_log_address.errors.full_messages).to include("User area must be other than 1")
       end
       it '市町村が空の時' do
         @purchase_log_address.receiver_cities = ''
