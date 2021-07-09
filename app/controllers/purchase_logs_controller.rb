@@ -1,7 +1,7 @@
 class PurchaseLogsController < ApplicationController
   before_action :item_find, only: [:index, :create]
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :root_path [:index, :create]
+  before_action :root_path, only: [:index, :create]
 
 
 
@@ -23,7 +23,7 @@ class PurchaseLogsController < ApplicationController
   private
 
   def purchase_log_params
-    params.require(:purchase_log_address).permit(:receiver_postal_code, :user_area_id, :receiver_cities, :receiver_address, :receiver_building_name, :receiver_phone_number, :purchases_log_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:purchase_log_address).permit(:receiver_postal_code, :user_area_id, :receiver_cities, :receiver_address, :receiver_building_name, :receiver_phone_number, :purchase_log_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
@@ -39,8 +39,8 @@ class PurchaseLogsController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def  root_path  
-    if current_user.id == @item.user_id || @item.purchase_log_id.present?
+  def root_path  
+    if current_user.id == @item.user_id || @item.purchase_log.present?
     　redirect_to root_path
     end
   end
